@@ -1,3 +1,22 @@
+"""
+ * Copyright (c) 2016 Hailin Su, ISU NBCEC
+ *
+ * This file is part of plotMCMC.
+ *
+ * plotMCMC is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * plotMCMC is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Lesser Public License
+ * along with plotMCMC.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
 function plot_MCMC_Sample(fileName; title="", tr=[], wcm_each=24, hcm_each=8)
 
 	println(" - loading data")
@@ -53,7 +72,7 @@ function plot_MCMC_Sample(fileName; title="", tr=[], wcm_each=24, hcm_each=8)
 		pmq[row,col]=pmq[col,row]=mqt
 		mhf  = round(mean(mtx[2*qt+1:end,c]), 2)
 		pmh[row,col]=pmh[col,row]=mhf
-	
+
 		if row == col
 			ylab = "Var($rlab)"
 			row += 1
@@ -132,7 +151,7 @@ function plot_MCMC_Sample(fileName; title="", tr=[], wcm_each=24, hcm_each=8)
 		finalhf  = vstack(finalhf, p)
 
 	end
-	
+
 	# set_default_plot_size((wcm_each)cm, (1+(hcm_each*m))cm)
 
 
@@ -157,4 +176,3 @@ function plot_MCMC_Sample(fileName; title="", tr=[], wcm_each=24, hcm_each=8)
 	println(" - PNG and SVG saved to plot.[qt|hf.]$fileName.png[svg]. \n\n")
 	return (pm0, pmq, pmh)
 end
-
